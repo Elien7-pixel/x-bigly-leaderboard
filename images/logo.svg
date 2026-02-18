@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" width="200" height="80">
+  <!-- X mark -->
+  <g fill="#1A1A1A">
+    <rect x="10" y="8" width="8" height="45" transform="rotate(-25 14 30)"/>
+    <rect x="10" y="8" width="8" height="45" transform="rotate(25 14 30)"/>
+  </g>
+  
+  <!-- Yellow dot -->
+  <circle cx="52" cy="22" r="6" fill="#FFD100"/>
+  
+  <!-- bigly text -->
+  <text x="58" y="32" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800" fill="#1A1A1A">bigly</text>
+  
+  <!-- labs text -->
+  <text x="68" y="58" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800" fill="#1A1A1A">labs</text>
+  
+  <!-- Dis-Chem+ -->
+  <text x="58" y="74" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#1A1A1A">Dis-Chem</text>
+  <text x="118" y="74" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#FFD100">+</text>
+</svg>

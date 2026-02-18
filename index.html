@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knit A Square To Win | X, bigly labs</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <img src="images/logo.png" alt="X, bigly labs" class="logo-img">
+            </div>
+            <div class="header-content">
+                <h1 class="campaign-title">Knit A Square To Win</h1>
+                <p class="campaign-subtitle">67 Blankets for Mandela Day</p>
+            </div>
+            <div class="header-actions">
+                <div class="header-badge">🧶 Live</div>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="tabs">
+            <button class="tab-btn active" data-tab="leaderboard">Leaderboard</button>
+            <button class="tab-btn" data-tab="wheel">Spin The Wheel</button>
+        </nav>
+
+        <!-- Leaderboard Section -->
+        <section id="leaderboard" class="tab-content active">
+            <div class="leaderboard-header">
+                <h2>Tribe Leaderboard</h2>
+                <div class="total-squares">
+                    <span class="total-label">Total Squares Knitted</span>
+                    <span class="total-count" id="totalSquares">0</span>
+                </div>
+            </div>
+
+            <div class="leaderboard-container">
+                <div class="leaderboard-list" id="leaderboardList">
+                    <!-- Tribes will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Progress to Goal -->
+            <div class="goal-section">
+                <h3>Progress to 67 Blankets</h3>
+                <div class="goal-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="goalProgress"></div>
+                    </div>
+                    <div class="progress-stats">
+                        <span id="blanketsComplete">0</span> / 67 Blankets
+                    </div>
+                </div>
+                <p class="goal-info">Each blanket requires approximately 35 squares</p>
+            </div>
+
+            <!-- Activity Feed -->
+            <div class="activity-section">
+                <div class="activity-header">
+                    <h3>Live Activity</h3>
+                    <button id="exportCsvBtn" class="btn-export" title="Download Report">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Export CSV
+                    </button>
+                </div>
+                <div class="activity-feed" id="activityFeed">
+                    <div class="activity-empty">No activity yet. Add some squares!</div>
+                </div>
+            </div>
+
+            <!-- Admin Controls (for demo) -->
+            <div class="admin-panel">
+                <h3>Add Squares</h3>
+                <div class="admin-controls">
+                    <select id="tribeSelect">
+                        <option value="0">Integrated Digital Engagement</option>
+                        <option value="1">Integrated Health Enablement</option>
+                        <option value="2">Wholesale Excellence</option>
+                        <option value="3">Enterprise Acceleration</option>
+                    </select>
+                    <input type="number" id="squareCount" min="1" value="1" placeholder="Squares">
+                    <button id="addSquaresBtn" class="btn-primary">Add Squares</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spinning Wheel Section -->
+        <section id="wheel" class="tab-content">
+            <div class="wheel-header">
+                <h2>Spin The Wheel</h2>
+                <p>Try your luck and win amazing prizes!</p>
+            </div>
+
+            <div class="wheel-container">
+                <div class="wheel-wrapper">
+                    <div class="wheel-pointer"></div>
+                    <canvas id="wheelCanvas" width="400" height="400"></canvas>
+                </div>
+                <button id="spinBtn" class="spin-btn">SPIN!</button>
+            </div>
+
+            <div class="prize-display" id="prizeDisplay">
+                <div class="prize-content" id="prizeContent">
+                    <span class="prize-label">Your Prize</span>
+                    <span class="prize-text" id="prizeText">Spin to win!</span>
+                </div>
+            </div>
+
+            <!-- Spin History -->
+            <div class="spin-history-section">
+                <div class="spin-history-header">
+                    <h3>Spin History</h3>
+                    <button id="exportSpinHistoryBtn" class="btn-export" title="Download Spin History">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Export CSV
+                    </button>
+                </div>
+                <div class="spin-history-list" id="spinHistoryList">
+                    <div class="activity-empty">No spins yet. Give it a try!</div>
+                </div>
+            </div>
+
+            <!-- Prize Configuration (for demo) -->
+            <div class="admin-panel">
+                <h3>Configure Prizes</h3>
+                <div class="prize-list" id="prizeList">
+                    <!-- Prizes will be populated by JavaScript -->
+                </div>
+                <div class="add-prize">
+                    <input type="text" id="newPrizeName" placeholder="Prize name">
+                    <input type="color" id="newPrizeColor" value="#FF6B6B">
+                    <button id="addPrizeBtn" class="btn-secondary">Add Prize</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Making a difference, one square at a time 🧶</p>
+            <p class="footer-date">Mandela Day 2026</p>
+        </footer>
+    </div>
+
+    <script type="module" src="/js/app.js"></script>
+</body>
+</html>
