@@ -83,8 +83,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Press 'Space' to spin (when on wheel tab)
-        if (e.key === ' ' && document.getElementById('wheel').classList.contains('active')) {
+        // Press 'Space' to spin (when on wheel tab, but not when typing in an input)
+        const tag = e.target.tagName.toLowerCase();
+        if (e.key === ' ' && document.getElementById('wheel').classList.contains('active') && tag !== 'input' && tag !== 'textarea') {
             e.preventDefault();
             wheel.spin();
         }
