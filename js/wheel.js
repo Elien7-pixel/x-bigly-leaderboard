@@ -143,15 +143,17 @@ class SpinningWheel {
             // Text color based on background brightness
             const isLightBg = prize.color === '#FFD100' || prize.color === '#F1C40F';
             ctx.fillStyle = isLightBg ? '#1A1A1A' : '#FFFFFF';
-            ctx.font = '600 13px Inter, system-ui, sans-serif';
 
-            // Truncate long text
-            let text = prize.name;
-            if (text.length > 14) {
-                text = text.substring(0, 11) + '...';
+            // Auto-size font to fit the available space
+            const maxTextWidth = this.radius - 55;
+            let fontSize = 13;
+            ctx.font = `600 ${fontSize}px Inter, system-ui, sans-serif`;
+            while (ctx.measureText(prize.name).width > maxTextWidth && fontSize > 7) {
+                fontSize--;
+                ctx.font = `600 ${fontSize}px Inter, system-ui, sans-serif`;
             }
 
-            ctx.fillText(text, this.radius - 25, 0);
+            ctx.fillText(prize.name, this.radius - 25, 0);
             ctx.restore();
         });
 
