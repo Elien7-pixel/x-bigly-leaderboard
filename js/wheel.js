@@ -144,16 +144,35 @@ class SpinningWheel {
             const isLightBg = prize.color === '#FFD100' || prize.color === '#F1C40F';
             ctx.fillStyle = isLightBg ? '#1A1A1A' : '#FFFFFF';
 
-            // Auto-size font to fit the available space
+            const fontSize = 13;
+            const lineHeight = fontSize + 3;
             const maxTextWidth = this.radius - 55;
-            let fontSize = 13;
             ctx.font = `600 ${fontSize}px Inter, system-ui, sans-serif`;
-            while (ctx.measureText(prize.name).width > maxTextWidth && fontSize > 7) {
-                fontSize--;
-                ctx.font = `600 ${fontSize}px Inter, system-ui, sans-serif`;
-            }
 
-            ctx.fillText(prize.name, this.radius - 25, 0);
+            // Wrap text onto two lines if it doesn't fit
+            const text = prize.name;
+            if (ctx.measureText(text).width <= maxTextWidth) {
+                ctx.fillText(text, this.radius - 25, 0);
+            } else {
+                // Split at the last space that keeps line 1 within maxTextWidth
+                const words = text.split(' ');
+                let line1 = words[0];
+                let splitIndex = 1;
+                for (let w = 1; w < words.length; w++) {
+                    const test = line1 + ' ' + words[w];
+                    if (ctx.measureText(test).width > maxTextWidth) break;
+                    line1 = test;
+                    splitIndex = w + 1;
+                }
+                const line2 = words.slice(splitIndex).join(' ');
+
+                if (line2) {
+                    ctx.fillText(line1, this.radius - 25, -lineHeight / 2);
+                    ctx.fillText(line2, this.radius - 25, lineHeight / 2);
+                } else {
+                    ctx.fillText(text, this.radius - 25, 0);
+                }
+            }
             ctx.restore();
         });
 
