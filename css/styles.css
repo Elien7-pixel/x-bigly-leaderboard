@@ -27,10 +27,16 @@
     --border-color-strong: var(--gray-300);
     
     /* Tribe Colors */
-    --tribe-1: #5C2D82; /* Integrated Digital Engagement - Purple */
-    --tribe-2: #FFD100; /* Integrated Health Enablement - Yellow */
-    --tribe-3: #1A1A1A; /* Wholesale Excellence - Black */
-    --tribe-4: #7B4A9E; /* Enterprise Acceleration - Light Purple */
+    --tribe-1: #6366F1; /* Integrated Digital Engagement - Indigo */
+    --tribe-2: #10B981; /* Integrated Health Enablement - Green */
+    --tribe-3: #F59E0B; /* Wholesale Excellence - Amber */
+    --tribe-4: #EC4899; /* Enterprise Acceleration - Pink */
+    --tribe-5: #EF4444; /* People and Performance - Red */
+    --tribe-6: #3B82F6; /* Data, Analytics and AI - Blue */
+    --tribe-7: #14B8A6; /* Customer Growth and Engagement - Teal */
+    --tribe-8: #8B5CF6; /* Commercial Decision Intelligence - Violet */
+    --tribe-9: #F97316; /* Strategic Finance - Orange */
+    --tribe-10: #06B6D4; /* Design and Insights - Cyan */
     
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
@@ -367,6 +373,12 @@ body {
 .tribe-card[data-tribe="1"] .tribe-progress-fill { background: var(--tribe-2); }
 .tribe-card[data-tribe="2"] .tribe-progress-fill { background: var(--tribe-3); }
 .tribe-card[data-tribe="3"] .tribe-progress-fill { background: var(--tribe-4); }
+.tribe-card[data-tribe="4"] .tribe-progress-fill { background: var(--tribe-5); }
+.tribe-card[data-tribe="5"] .tribe-progress-fill { background: var(--tribe-6); }
+.tribe-card[data-tribe="6"] .tribe-progress-fill { background: var(--tribe-7); }
+.tribe-card[data-tribe="7"] .tribe-progress-fill { background: var(--tribe-8); }
+.tribe-card[data-tribe="8"] .tribe-progress-fill { background: var(--tribe-9); }
+.tribe-card[data-tribe="9"] .tribe-progress-fill { background: var(--tribe-10); }
 
 .tribe-squares {
     display: flex;

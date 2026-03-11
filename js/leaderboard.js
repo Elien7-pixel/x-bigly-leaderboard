@@ -13,7 +13,13 @@ class Leaderboard {
             { id: 0, name: 'Integrated Digital Engagement', squares: 0, color: '#6366F1' },
             { id: 1, name: 'Integrated Health Enablement', squares: 0, color: '#10B981' },
             { id: 2, name: 'Wholesale Excellence', squares: 0, color: '#F59E0B' },
-            { id: 3, name: 'Enterprise Acceleration', squares: 0, color: '#EC4899' }
+            { id: 3, name: 'Enterprise Acceleration', squares: 0, color: '#EC4899' },
+            { id: 4, name: 'People and Performance', squares: 0, color: '#EF4444' },
+            { id: 5, name: 'Data, Analytics and AI', squares: 0, color: '#3B82F6' },
+            { id: 6, name: 'Customer Growth and Engagement', squares: 0, color: '#14B8A6' },
+            { id: 7, name: 'Commercial Decision Intelligence', squares: 0, color: '#8B5CF6' },
+            { id: 8, name: 'Strategic Finance', squares: 0, color: '#F97316' },
+            { id: 9, name: 'Design and Insights', squares: 0, color: '#06B6D4' }
         ];
 
         // Goal: 67 blankets, approximately 35 squares per blanket
@@ -200,11 +206,11 @@ class Leaderboard {
         // Render tribe cards
         this.leaderboardList.innerHTML = sortedTribes.map((tribe, index) => {
             const progressPercent = (tribe.squares / maxSquares) * 100;
-            const rankClass = index < 3 ? `rank-${index + 1}` : '';
+            const rankStyle = `background: ${tribe.color}; color: #fff;`;
 
             return `
                 <div class="tribe-card" data-tribe="${tribe.id}">
-                    <div class="tribe-rank ${rankClass}">${index + 1}</div>
+                    <div class="tribe-rank" style="${rankStyle}">${index + 1}</div>
                     <div class="tribe-info">
                         <div class="tribe-name">${tribe.name}</div>
                         <div class="tribe-progress">
@@ -214,7 +220,7 @@ class Leaderboard {
                         </div>
                     </div>
                     <div class="tribe-squares">
-                        <span class="tribe-count">${tribe.squares.toLocaleString()}</span>
+                        <span class="tribe-count" style="color: ${tribe.color}">${tribe.squares.toLocaleString()}</span>
                         <span class="tribe-label">squares</span>
                     </div>
                 </div>

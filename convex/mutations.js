@@ -74,7 +74,7 @@ export const resetTribes = mutation({
 export const setDemoData = mutation({
   args: {},
   handler: async (ctx) => {
-    const demoSquares = [245, 312, 198, 276];
+    const demoSquares = [245, 312, 198, 276, 230, 185, 260, 210, 155, 290];
     for (let i = 0; i < demoSquares.length; i++) {
       const tribe = await ctx.db
         .query("tribes")
@@ -104,6 +104,12 @@ export const fullReset = mutation({
       { tribeId: 1, name: "Integrated Health Enablement", squares: 0, color: "#10B981" },
       { tribeId: 2, name: "Wholesale Excellence", squares: 0, color: "#F59E0B" },
       { tribeId: 3, name: "Enterprise Acceleration", squares: 0, color: "#EC4899" },
+      { tribeId: 4, name: "People and Performance", squares: 0, color: "#EF4444" },
+      { tribeId: 5, name: "Data, Analytics and AI", squares: 0, color: "#3B82F6" },
+      { tribeId: 6, name: "Customer Growth and Engagement", squares: 0, color: "#14B8A6" },
+      { tribeId: 7, name: "Commercial Decision Intelligence", squares: 0, color: "#8B5CF6" },
+      { tribeId: 8, name: "Strategic Finance", squares: 0, color: "#F97316" },
+      { tribeId: 9, name: "Design and Insights", squares: 0, color: "#06B6D4" },
     ];
     for (const tribe of tribes) {
       await ctx.db.insert("tribes", tribe);
@@ -138,6 +144,12 @@ export const seed = mutation({
       { tribeId: 1, name: "Integrated Health Enablement", squares: 0, color: "#10B981" },
       { tribeId: 2, name: "Wholesale Excellence", squares: 0, color: "#F59E0B" },
       { tribeId: 3, name: "Enterprise Acceleration", squares: 0, color: "#EC4899" },
+      { tribeId: 4, name: "People and Performance", squares: 0, color: "#EF4444" },
+      { tribeId: 5, name: "Data, Analytics and AI", squares: 0, color: "#3B82F6" },
+      { tribeId: 6, name: "Customer Growth and Engagement", squares: 0, color: "#14B8A6" },
+      { tribeId: 7, name: "Commercial Decision Intelligence", squares: 0, color: "#8B5CF6" },
+      { tribeId: 8, name: "Strategic Finance", squares: 0, color: "#F97316" },
+      { tribeId: 9, name: "Design and Insights", squares: 0, color: "#06B6D4" },
     ];
     for (const tribe of tribes) {
       await ctx.db.insert("tribes", tribe);
