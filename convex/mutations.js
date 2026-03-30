@@ -117,14 +117,11 @@ export const fullReset = mutation({
 
     // Re-seed prizes
     const prizes = [
-      { name: "Coffee Voucher", color: "#5C2D82", order: 0 },
-      { name: "Lunch with CEO", color: "#FFD100", order: 1 },
-      { name: "Extra Leave Day", color: "#7B4A9E", order: 2 },
-      { name: "Goodie Bag", color: "#1A1A1A", order: 3 },
-      { name: "Branded Hoodie", color: "#9B59B6", order: 4 },
-      { name: "Movie Tickets", color: "#F1C40F", order: 5 },
-      { name: "Spa Voucher", color: "#8E44AD", order: 6 },
-      { name: "Try Again", color: "#6B7280", order: 7 },
+      { name: "Dis-Chem Voucher - R250", color: "#5C2D82", order: 0 },
+      { name: "Biogen Voucher - R250", color: "#FFD100", order: 1 },
+      { name: "Kauai Voucher - R200", color: "#7B4A9E", order: 2 },
+      { name: "Starbucks Coffee Voucher", color: "#00704A", order: 3 },
+      { name: "Sorry, better luck next time", color: "#6B7280", order: 4 },
     ];
     for (const prize of prizes) {
       await ctx.db.insert("prizes", prize);
@@ -135,10 +132,6 @@ export const fullReset = mutation({
 export const seed = mutation({
   args: {},
   handler: async (ctx) => {
-    // Only seed if tribes table is empty
-    const existingTribe = await ctx.db.query("tribes").first();
-    if (existingTribe) return;
-
     const tribes = [
       { tribeId: 0, name: "Integrated Digital Engagement", squares: 0, color: "#6366F1" },
       { tribeId: 1, name: "Integrated Health Enablement", squares: 0, color: "#10B981" },
@@ -151,26 +144,30 @@ export const seed = mutation({
       { tribeId: 8, name: "Strategic Finance", squares: 0, color: "#F97316" },
       { tribeId: 9, name: "Design and Insights", squares: 0, color: "#06B6D4" },
     ];
+    // Insert any missing tribes
     for (const tribe of tribes) {
-      await ctx.db.insert("tribes", tribe);
+      const existing = await ctx.db
+        .query("tribes")
+        .withIndex("by_tribeId", (q) => q.eq("tribeId", tribe.tribeId))
+        .unique();
+      if (!existing) {
+        await ctx.db.insert("tribes", tribe);
+      }
     }
 
     // Only seed prizes if empty
     const existingPrize = await ctx.db.query("prizes").first();
-    if (existingPrize) return;
-
-    const prizes = [
-      { name: "Coffee Voucher", color: "#5C2D82", order: 0 },
-      { name: "Lunch with CEO", color: "#FFD100", order: 1 },
-      { name: "Extra Leave Day", color: "#7B4A9E", order: 2 },
-      { name: "Goodie Bag", color: "#1A1A1A", order: 3 },
-      { name: "Branded Hoodie", color: "#9B59B6", order: 4 },
-      { name: "Movie Tickets", color: "#F1C40F", order: 5 },
-      { name: "Spa Voucher", color: "#8E44AD", order: 6 },
-      { name: "Try Again", color: "#6B7280", order: 7 },
-    ];
-    for (const prize of prizes) {
-      await ctx.db.insert("prizes", prize);
+    if (!existingPrize) {
+      const prizes = [
+        { name: "Dis-Chem Voucher - R250", color: "#5C2D82", order: 0 },
+        { name: "Biogen Voucher - R250", color: "#FFD100", order: 1 },
+        { name: "Kauai Voucher - R200", color: "#7B4A9E", order: 2 },
+        { name: "Starbucks Coffee Voucher", color: "#00704A", order: 3 },
+        { name: "Sorry, better luck next time", color: "#6B7280", order: 4 },
+      ];
+      for (const prize of prizes) {
+        await ctx.db.insert("prizes", prize);
+      }
     }
   },
 });
