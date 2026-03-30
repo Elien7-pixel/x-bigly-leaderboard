@@ -87,6 +87,28 @@ export const setDemoData = mutation({
   },
 });
 
+export const resetPrizes = mutation({
+  args: {},
+  handler: async (ctx) => {
+    // Delete all existing prizes
+    const prizes = await ctx.db.query("prizes").collect();
+    for (const prize of prizes) {
+      await ctx.db.delete(prize._id);
+    }
+    // Insert new prizes
+    const newPrizes = [
+      { name: "Dis-Chem Voucher - R250", color: "#5C2D82", order: 0 },
+      { name: "Biogen Voucher - R250", color: "#FFD100", order: 1 },
+      { name: "Kauai Voucher - R200", color: "#7B4A9E", order: 2 },
+      { name: "Starbucks Coffee Voucher", color: "#00704A", order: 3 },
+      { name: "Sorry, better luck next time", color: "#6B7280", order: 4 },
+    ];
+    for (const prize of newPrizes) {
+      await ctx.db.insert("prizes", prize);
+    }
+  },
+});
+
 export const fullReset = mutation({
   args: {},
   handler: async (ctx) => {
