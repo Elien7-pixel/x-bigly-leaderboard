@@ -19,7 +19,8 @@ class Leaderboard {
             { id: 6, name: 'Customer Growth and Engagement', squares: 0, color: '#14B8A6' },
             { id: 7, name: 'Commercial Decision Intelligence', squares: 0, color: '#8B5CF6' },
             { id: 8, name: 'Strategic Finance', squares: 0, color: '#F97316' },
-            { id: 9, name: 'Design and Insights', squares: 0, color: '#06B6D4' }
+            { id: 9, name: 'Design and Insights', squares: 0, color: '#06B6D4' },
+            { id: 10, name: 'Launch Studio', squares: 0, color: '#84CC16' }
         ];
 
         // Goal: 67 blankets, approximately 35 squares per blanket

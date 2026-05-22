@@ -74,7 +74,7 @@ export const resetTribes = mutation({
 export const setDemoData = mutation({
   args: {},
   handler: async (ctx) => {
-    const demoSquares = [245, 312, 198, 276, 230, 185, 260, 210, 155, 290];
+    const demoSquares = [245, 312, 198, 276, 230, 185, 260, 210, 155, 290, 220];
     for (let i = 0; i < demoSquares.length; i++) {
       const tribe = await ctx.db
         .query("tribes")
@@ -132,6 +132,7 @@ export const fullReset = mutation({
       { tribeId: 7, name: "Commercial Decision Intelligence", squares: 0, color: "#8B5CF6" },
       { tribeId: 8, name: "Strategic Finance", squares: 0, color: "#F97316" },
       { tribeId: 9, name: "Design and Insights", squares: 0, color: "#06B6D4" },
+      { tribeId: 10, name: "Launch Studio", squares: 0, color: "#84CC16" },
     ];
     for (const tribe of tribes) {
       await ctx.db.insert("tribes", tribe);
@@ -165,6 +166,7 @@ export const seed = mutation({
       { tribeId: 7, name: "Commercial Decision Intelligence", squares: 0, color: "#8B5CF6" },
       { tribeId: 8, name: "Strategic Finance", squares: 0, color: "#F97316" },
       { tribeId: 9, name: "Design and Insights", squares: 0, color: "#06B6D4" },
+      { tribeId: 10, name: "Launch Studio", squares: 0, color: "#84CC16" },
     ];
     // Insert any missing tribes
     for (const tribe of tribes) {
