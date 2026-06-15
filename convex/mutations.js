@@ -20,6 +20,19 @@ export const addSquares = mutation({
   },
 });
 
+export const renameTribe = mutation({
+  args: { tribeId: v.number(), name: v.string() },
+  handler: async (ctx, { tribeId, name }) => {
+    const tribe = await ctx.db
+      .query("tribes")
+      .withIndex("by_tribeId", (q) => q.eq("tribeId", tribeId))
+      .unique();
+    if (!tribe) throw new Error(`Tribe ${tribeId} not found`);
+
+    await ctx.db.patch(tribe._id, { name });
+  },
+});
+
 export const addPrize = mutation({
   args: { name: v.string(), color: v.string() },
   handler: async (ctx, { name, color }) => {
@@ -124,7 +137,7 @@ export const fullReset = mutation({
     const tribes = [
       { tribeId: 0, name: "Integrated Digital Engagement", squares: 0, color: "#6366F1" },
       { tribeId: 1, name: "Integrated Health Enablement", squares: 0, color: "#10B981" },
-      { tribeId: 2, name: "Wholesale Excellence", squares: 0, color: "#F59E0B" },
+      { tribeId: 2, name: "Wholesale Innovation", squares: 0, color: "#F59E0B" },
       { tribeId: 3, name: "Enterprise Acceleration", squares: 0, color: "#EC4899" },
       { tribeId: 4, name: "People and Performance", squares: 0, color: "#EF4444" },
       { tribeId: 5, name: "Data, Analytics and AI", squares: 0, color: "#3B82F6" },
@@ -158,7 +171,7 @@ export const seed = mutation({
     const tribes = [
       { tribeId: 0, name: "Integrated Digital Engagement", squares: 0, color: "#6366F1" },
       { tribeId: 1, name: "Integrated Health Enablement", squares: 0, color: "#10B981" },
-      { tribeId: 2, name: "Wholesale Excellence", squares: 0, color: "#F59E0B" },
+      { tribeId: 2, name: "Wholesale Innovation", squares: 0, color: "#F59E0B" },
       { tribeId: 3, name: "Enterprise Acceleration", squares: 0, color: "#EC4899" },
       { tribeId: 4, name: "People and Performance", squares: 0, color: "#EF4444" },
       { tribeId: 5, name: "Data, Analytics and AI", squares: 0, color: "#3B82F6" },

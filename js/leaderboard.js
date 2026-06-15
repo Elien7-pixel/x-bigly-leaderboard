@@ -12,7 +12,7 @@ class Leaderboard {
         this.tribes = [
             { id: 0, name: 'Integrated Digital Engagement', squares: 0, color: '#6366F1' },
             { id: 1, name: 'Integrated Health Enablement', squares: 0, color: '#10B981' },
-            { id: 2, name: 'Wholesale Excellence', squares: 0, color: '#F59E0B' },
+            { id: 2, name: 'Wholesale Innovation', squares: 0, color: '#F59E0B' },
             { id: 3, name: 'Enterprise Acceleration', squares: 0, color: '#EC4899' },
             { id: 4, name: 'People and Performance', squares: 0, color: '#EF4444' },
             { id: 5, name: 'Data, Analytics and AI', squares: 0, color: '#3B82F6' },
